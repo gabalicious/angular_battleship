@@ -1,0 +1,98 @@
+
+
+<!-- <p>Game: {{game}}</p>
+<p>Moves: {{moves}}</p>
+<p>p1tries: {{p1tries}}</p>
+<p>p2tries: {{p2tries}}</p>
+<p>p1hits: {{p1hits}}</p>
+<p>p2hits: {{p2hits}}</p>
+<p>p1misses: {{p1misses}}</p>
+<p>p2misses: {{p2misses}}</p> -->
+<div class="game_box">
+	
+
+	<div class="row">
+		<div class="col-md-4">
+			<h3 class="text-center">Player 1</h3>
+			<div class="text-center">Shooting Percentage: {{ shootingPercentage('p1')}}%</div>
+			<div class="text-center">Tries: {{p1_selected.length}} /25</div>
+			<div class="text-center">Hits: {{p1_hits.length }}/ {{p1_selected.length}}</div>	
+		</div>
+		<div class="text-center col-md-4">
+			<span class="text-center">
+				<h3 class="text-center">Game {{id}}</h3>
+				<div class="text-center" ng-show="p2Turn()">Turn CPU</div>
+				<div class="text-center" ng-show="p1Turn()">Turn P1</div>
+				<div>Move# {{moves.length}} {{lastMove.move}} Player: {{lastMove.player}}</div>
+
+
+
+			</span>
+
+		</div>
+		<div class="col-md-4">
+			<h3 class="text-center">Player 2</h3>
+			<div class="text-center">Shooting Percentage: {{ shootingPercentage('p2')}}%</div>
+			<div class="text-center">Tries: {{p2_selected.length}} /25</div>
+			<div class="text-center">Hits: {{p2_hits.length }}/ {{p2_selected.length}}</div>	
+		</div>
+	</div>
+
+	<div>
+		<div class="player">
+
+			<table class="table table-custom">
+				<thead>
+					<tr>
+						<th> </th>
+						<th ng-repeat="x in xArray">{{x}}</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="y in yArray">
+						<td>{{y}}</td>
+						<td ng-repeat="x in xArray" data-coordinates="{{x+y}}"> 
+							<img ng-show="isEmpty(x+y,'p1') && !isShip(x+y)" src="https://upload.wikimedia.org/wikipedia/commons/c/ca/1x1.png" height="{{size}}" width="{{size}}" alt="">
+							<img ng-show="isShip(x+y)" src="http://findicons.com/files/icons/2198/dark_glass/128/kbattleship.png" height="{{size}}" width="{{size}}" alt="">
+							<div class="animated flash" ng-show="isCoorinateHit(x+y,'p2')"><img class="animated flash"src="https://cdn3.iconfinder.com/data/icons/softwaredemo/PNG/128x128/Circle_Red.png" height="{{size}}" width="{{size}}"  alt=""></div>
+							<div class="animated flash" ng-show="isCoorinateMissed(x+y,'p2')"><img src="http://www.clker.com/cliparts/1/E/w/H/A/N/glossy-grey-light-button.svg"  height="{{size}}" width="{{size}}"  alt=""></div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+
+
+		<div class="player">
+
+			<table class="table table-custom">
+				<thead>
+					<tr>
+						<th ng-repeat="x in xArray">{{x}}</th>
+						<th> </th>
+
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="y in yArray">
+						<td ng-repeat="x in xArray" data-coordinates="{{x+y}}">
+							<img ng-show="isEmpty(x+y,'p2')" ng-hide="p1Turn() ||  isCoorinateHit(x+y,'p1') || isCoorinateMissed(x+y,'p1') " src="https://upload.wikimedia.org/wikipedia/commons/c/ca/1x1.png" height="{{size}}" width="{{size}}" alt="">
+
+							<a ng-show="isCoorinatePlayed(x+y) && p1Turn()" ng-click="playerGo('p1',x+y, $event)" href=""><img src="https://cdn1.iconfinder.com/data/icons/web-interface-part-2/32/circle-question-mark-128.png" height="{{size}}" width="{{size}}" alt=""></a>
+							<div ng-show="isCoorinateHit(x+y,'p1')"><img src="https://cdn3.iconfinder.com/data/icons/softwaredemo/PNG/128x128/Circle_Red.png" height="{{size}}" width="{{size}}"  alt=""></div>
+							<div ng-show="isCoorinateMissed(x+y,'p1')"><img src="http://www.clker.com/cliparts/1/E/w/H/A/N/glossy-grey-light-button.svg"  height="{{size}}" width="{{size}}"  alt=""></div>
+						</td>
+						<td>{{y}}</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<div class="text-center">
+		<button ng-click="randomGo('p1')" ng-show="p1Turn() && notGameOver()" class="btn btn-primary animated swing">P1 Random Go</button>
+		<h3 class="animated flip" ng-show="player1Wins()">Player 1 Wins!</h3>
+		<h3 class="animated flip" ng-show="player2Wins()">Player 2 Wins!</h3>
+
+	</div>
+
+</div>
