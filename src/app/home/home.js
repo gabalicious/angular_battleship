@@ -1,7 +1,6 @@
 angular.module('myApp.home', [
-    'ui.router',
-    'myApp.models.messages'
-])
+    'ui.router'
+    ])
     .config(function ($stateProvider) {
         $stateProvider
             .state('home', {
@@ -11,15 +10,10 @@ angular.module('myApp.home', [
             })
         ;
     })
-    .controller('HomeCtrl', function (Messages) {
+    .controller('HomeCtrl', function () {
         var home = this;
         home.title = 'Home Page';
         home.body = 'This is the about home body';
 
-        home.message = Messages.getMessage();
 
-        home.updateMessage = function (m) {
-            Messages.setMessage(m);
-        };
-    })
-;
+    });
