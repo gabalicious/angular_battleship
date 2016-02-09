@@ -1,0 +1,42 @@
+<h3 class="text-center">Please Select 10 coordinates</h3>
+<div class="text-center">Selected: <span ng-repeat="coordinate in selected.sort()"> {{coordinate}} | </span><br><br>
+	<button ng-click="randomizeP1()" class="btn btn-warning center-block" href="">Randomize</button>
+</div>
+<form action="" ng-submit="start($event,selected)">
+	<table ng-show="false" class="table table-create">
+		<thead>
+			<tr>
+				<th> </th>
+				<th ng-repeat="x in xArray">{{x}}</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="y in yArray">
+				<td>{{y}}</td>
+				<td ng-repeat="x in xArray" data-coordinates="{{x+y}}">  <input ng-click="select(x+y, $event)" type="checkbox" name="{{x+y}}" value="true"> 
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<br>
+	<table class="table table-create">
+	<thead>
+		<tr>
+			<th> </th>
+			<th ng-repeat="x in xArray">{{x}}</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="y in yArray">
+			<td>{{y}}</td>
+			<td ng-repeat="x in xArray" data-coordinates="{{x+y}}" ng-click="console.log('test')">
+				<img ng-click="add(x+y)" ng-show="!selected.toString().includes(x+y)" src="https://upload.wikimedia.org/wikipedia/commons/c/ca/1x1.png" height="{{60}}" width="{{60}}" alt="">
+				<img ng-click="remove(x+y)" ng-show="selected.toString().includes(x+y)" src="http://findicons.com/files/icons/2198/dark_glass/128/kbattleship.png" height="{{60}}" width="{{60}}" alt="">
+			</td>
+		</tr>
+	</tbody>
+</table>
+<br>
+
+	<div><button  ng-if="selected.length === 10" class="btn btn-success center-block animated swing" href="">Start</button> <br></div>
+</form>
