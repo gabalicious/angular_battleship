@@ -125,7 +125,6 @@ angular.module('myApp.show', [
 
         {
            if (show.p2Turn() && (show.p1_remaining_ships.length != 0 && show.p2_remaining_ships != 0)) {
-            console.log("p2 go");
 
             window.setTimeout(function(){
                 show.randomGo("p2");
@@ -167,7 +166,6 @@ show.playerGo = function(player, coordinate){
     })
     .then(function successCallback(response) {
         updateGame(response.data);
-        console.log(show["remaining_p1_coordinates"].length);
 
     }, function errorCallback(response) {
 
@@ -182,7 +180,6 @@ show.randomGo = function(player){
     : "remaining_p2_coordinates"
     var randomNum = Math.floor((Math.random() * show[remaining_coordinates].length));
     var coordinate =  show[remaining_coordinates][randomNum];
-    console.log(show[remaining_coordinates].length);
     show.playerGo(player, coordinate);
 };
 
