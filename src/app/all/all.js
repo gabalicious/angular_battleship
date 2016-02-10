@@ -1,6 +1,6 @@
 angular.module('myApp.all', [
     'ui.router'
-        ])
+    ])
 .config(function ($stateProvider) {
     $stateProvider
     .state('all', {
@@ -15,7 +15,21 @@ angular.module('myApp.all', [
     $http.get('http://localhost:3000/games').
     success(function(data) {
         $scope.games = data;
-        console.log($scope.games);
     });
-})
-;
+
+    $scope.delete = function(game_id, $event){
+        window.confirm("Are you sure?") ?
+        (function(){
+           $event.preventDefault();
+           $http.delete('http://localhost:3000/games/' + game_id ).
+           success(function(data) {
+            var targetEl = "#game" + game_id;
+            $(targetEl).addClass("animated fadeOutRightBig");
+            $scope.games = data; 
+
+        });
+       })() :
+       console.log("Cancel was pressed");
+       
+   };
+});

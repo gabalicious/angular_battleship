@@ -1,4 +1,4 @@
 <p>This is the Games view.</p>
-<ul>
-	<li ng-repeat="game in games"><a href="#/games/{{game.id}}">Game #{{game.id}}</a> | Status: {{game.status}}</li>
+<ul class="list-group">
+	<li class="list-group-item" ng-repeat="game in games" id="game{{game.id}}"><a href="#/games/{{game.id}}">Game #{{game.id}}</a> | Status: {{game.status}} | <button ng-click="delete(game.id, $event)" class="btn btn-danger">Delete</button></li>
 </ul>
