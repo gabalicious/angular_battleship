@@ -16,3 +16,5 @@ Navigate to `http://localhost:2000`
 
 Screenshot
 -------------------
+
+![Battleship Image](https://github.com/gabalicious/angular_battleship/blob/master/screenshot.png)
