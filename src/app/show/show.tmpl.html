@@ -42,10 +42,10 @@
 					<tr ng-repeat="y in yArray">
 						<td>{{y}}</td>
 						<td ng-repeat="x in xArray" data-coordinates="{{x+y}}"> 
-							<img ng-show="isEmpty(x+y,'p1') && !isShip(x+y)" src="https://upload.wikimedia.org/wikipedia/commons/c/ca/1x1.png" height="{{size}}" width="{{size}}" alt="">
-							<img ng-show="isShip(x+y)" src="http://findicons.com/files/icons/2198/dark_glass/128/kbattleship.png" height="{{size}}" width="{{size}}" alt="">
-							<div class="animated flash" ng-show="isCoorinateHit(x+y,'p2')"><img class="animated flash"src="https://cdn3.iconfinder.com/data/icons/softwaredemo/PNG/128x128/Circle_Red.png" height="{{size}}" width="{{size}}"  alt=""></div>
-							<div class="animated flash" ng-show="isCoorinateMissed(x+y,'p2')"><img src="http://www.clker.com/cliparts/1/E/w/H/A/N/glossy-grey-light-button.svg"  height="{{size}}" width="{{size}}"  alt=""></div>
+							<img ng-show="isEmpty(x+y,'p1') && !isShip(x+y)" src="/assets/images/whitespace.png" height="{{size}}" width="{{size}}" alt="">
+							<img ng-show="isShip(x+y)" src="/assets/images/battleship.png" height="{{size}}" width="{{size}}" alt="">
+							<div class="animated flash" ng-show="isCoorinateHit(x+y,'p2')"><img class="animated flash"src="/assets/images/red.png" height="{{size}}" width="{{size}}"  alt=""></div>
+							<div class="animated flash" ng-show="isCoorinateMissed(x+y,'p2')"><img src="/assets/images/white.svg"  height="{{size}}" width="{{size}}"  alt=""></div>
 						</td>
 					</tr>
 				</tbody>
@@ -66,11 +66,11 @@
 				<tbody>
 					<tr ng-repeat="y in yArray">
 						<td ng-repeat="x in xArray" data-coordinates="{{x+y}}">
-							<img ng-show="isEmpty(x+y,'p2')" ng-hide="p1Turn() ||  isCoorinateHit(x+y,'p1') || isCoorinateMissed(x+y,'p1') " src="https://upload.wikimedia.org/wikipedia/commons/c/ca/1x1.png" height="{{size}}" width="{{size}}" alt="">
+							<img ng-show="isEmpty(x+y,'p2')" ng-hide="p1Turn() ||  isCoorinateHit(x+y,'p1') || isCoorinateMissed(x+y,'p1') " src="/assets/images/whitespace.png" height="{{size}}" width="{{size}}" alt="">
 
-							<a ng-show="isCoorinatePlayed(x+y) && p1Turn()" ng-click="playerGo('p1',x+y, $event)" href=""><img src="https://cdn1.iconfinder.com/data/icons/web-interface-part-2/32/circle-question-mark-128.png" height="{{size}}" width="{{size}}" alt=""></a>
-							<div ng-show="isCoorinateHit(x+y,'p1')"><img src="https://cdn3.iconfinder.com/data/icons/softwaredemo/PNG/128x128/Circle_Red.png" height="{{size}}" width="{{size}}"  alt=""></div>
-							<div ng-show="isCoorinateMissed(x+y,'p1')"><img src="http://www.clker.com/cliparts/1/E/w/H/A/N/glossy-grey-light-button.svg"  height="{{size}}" width="{{size}}"  alt=""></div>
+							<a ng-show="isCoorinatePlayed(x+y) && p1Turn()" ng-click="playerGo('p1',x+y, $event)" href=""><img src="/assets/images/question.png" height="{{size}}" width="{{size}}" alt=""></a>
+							<div ng-show="isCoorinateHit(x+y,'p1')"><img src="/assets/images/red.png" height="{{size}}" width="{{size}}"  alt=""></div>
+							<div ng-show="isCoorinateMissed(x+y,'p1')"><img src="h/assets/images/white.svg"  height="{{size}}" width="{{size}}"  alt=""></div>
 						</td>
 						<td>{{y}}</td>
 					</tr>
