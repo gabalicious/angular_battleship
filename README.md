@@ -14,3 +14,5 @@ serve src/ -p 2000
 
 Navigate to `http://localhost:2000`
 
+Screenshot
+-------------------
